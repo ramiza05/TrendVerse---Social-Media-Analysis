@@ -1,0 +1,24 @@
+stages:
+  insta:
+    cmd: python forecasting/train_insta.py --input forecasting/cleaned_insta_trends.csv
+    deps:
+      - forecasting/train_insta.py
+      - forecasting/cleaned_insta_trends.csv
+    outs:
+      - artifacts/trending_schedule_2026.csv
+      - artifacts/plot_html_2026.html
+
+  viral:
+    cmd: python forecasting/train_viral.py --input forecasting/cleaned_viral_trends.csv
+    deps:
+      - forecasting/train_viral.py
+      - forecasting/cleaned_viral_trends.csv
+    outs:
+      - artifacts/trending_schedule_prev.csv
+      - artifacts/plot_html_prev.html
+  
+  log_insta:
+    cmd: python forecasting/mlflow_insta.py 
+  
+  log_viral:
+    cmd: python forecasting/mlflow_viral.py
