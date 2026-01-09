@@ -1,0 +1,11 @@
+stages:
+  instagram:
+    cmd: python clean_insta.py --input raw/Instagram_Analytics.csv --output processed/cleaned_insta_trends.csv
+    deps:
+      - clean_insta.py
+      - raw/Instagram_Analytics.csv
+  viral_trends:
+    cmd: python clean_viral.py --input raw/Cleaned_Viral_Social_Media_Trends.csv --output processed/cleaned_viral_trends.csv
+    deps:
+      - clean_viral.py
+      - raw/Cleaned_Viral_Social_Media_Trends.csv
